@@ -1,0 +1,51 @@
+﻿@model SuperSushi.Data.Menu
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Menu</h4>
+<hr />
+
+
+<form asp-action="Edit">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*Cannot change the primary key so we change the scaffolded view to put the Id in a hidden type.
+                This way we still receive it in our Action (and check what we receive), but it looks much cleaner*@
+            <input asp-for="Id" type="hidden" />
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                @Html.DisplayFor(m => m.Id)
+            </div>
+            <div class="form-group">
+                <label asp-for="Naam" class="control-label"></label>
+                <input asp-for="Naam" class="form-control" />
+                <span asp-validation-for="Naam" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="form-group">
+            @*Cool stuff here in week six*@ 
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
